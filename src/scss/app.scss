@@ -1,0 +1,126 @@
+@import "~bootstrap/scss/bootstrap";
+
+$triangulo-detalhe: 5rem;
+$grey-bg: #1a171f;
+$light-bg: #e4e4e4;
+
+body {
+  background-color: $grey-bg;
+}
+
+#header {
+  $header-text-color: white;
+
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  color: $header-text-color;
+  height: 4rem;
+  background: $grey-bg;
+  box-shadow: 0px 2px 4px #0c0808;
+  
+  a,
+  .switch-btn {
+    color: $header-text-color;
+    position: relative;
+
+    &:before {
+      content: "";
+      height: 2px;
+      width: 0;
+      background: rgb(255, 0, 128);
+      position: absolute;
+      border-radius: 2px;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: 0.15s ease-in-out all;
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      &:before {
+        width: 40%;
+      }
+    }
+
+    &.active {
+      font-weight: 600;
+
+      &:before {
+        width: 80%;
+      }
+    }
+  }
+}
+
+.switch-btn {
+  color: white;
+  border: none;
+  background: transparent;
+  border: none !important;
+  outline: none !important;
+
+  img {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}
+
+#hero {
+  height: 40rem;
+  position: relative;
+  background-position: center;
+
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 100px));
+
+  .hero-text {
+    transform: translateY(-$triangulo-detalhe/2);
+  }
+
+  .bg-img {
+    background-image: url("../img/programador.jpg");
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: brightness(0.18);
+  }
+}
+
+#projects,
+#experience,
+#tech,
+#contact,
+#resume {
+  position: relative;
+  background: $grey-bg;
+  width: 100%;
+  height: 20rem;
+}
+
+.title-with-detail {
+  color: white;
+  position: relative;
+
+  &:after {
+    content: "";
+    height: 4px;
+    width: 2rem;
+    background: rgb(255, 0, 128);
+    position: absolute;
+    border-radius: 2px;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.15s ease-in-out all;
+  }
+}
