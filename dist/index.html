@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+    <div id="header">
+        <div class="container d-flex flex-direction-row justify-content-end">
+            <div class="ml-4">
+                <a class="active" href="#">
+                    <span lang="en">Projects</span>
+                    <span lang="pt">Projetos</span>
+                </a>
+            </div>
+            <div class="ml-4">
+                <a href="#">
+                    <span lang="en">Experiences</span>
+                    <span lang="pt">Experiências</span>
+                </a>
+            </div>
+            <div class="ml-4">
+                <a href="#">
+                    <span lang="en">Technologies</span>
+                    <span lang="pt">Tecnologias</span>
+                </a>
+            </div>
+            <div class="ml-4">
+                <a href="#">
+                    <span lang="en">Contact</span>
+                    <span lang="pt">Contato</span>
+                </a>
+            </div>
+            <div class="ml-4">
+                <a href="#">
+                    <span lang="en">Resume</span>
+                    <span lang="pt">Currículo</span>
+                </a>
+            </div>
+            <button class="ml-4 switch-btn" lang="en"><img class="mr-1" src="../src/img/brasil.png" alt="">
+                Português</button>
+            <button class="ml-4 switch-btn" lang="pt"><img class="mr-1" src="../src/img/eng.png"> English</button>
+        </div>
+    </div>
+    <div class="text-white d-flex justify-content-center align-items-center" id="hero">
+        <div class="bg-img"></div>
+
+        <div class="text-center hero-text">
+            <h1 class="display-2">Pedro dos Reis Viegas</h1>
+
+            <h3 class="font-weight-lighter" lang="en">Mobile and Web Front-end Developer</h3>
+            <h3 class="font-weight-lighter" lang="pt">Desenvolvedor Front-end Mobile e Web</h3>
+        </div>
+    </div>
+
+    <section id="projects">
+        <div class="pt-4">
+            <h2 class="text-center title-with-detail" lang="en">
+                Projects
+            </h2>
+            <h2 class="text-center title-with-detail" lang="pt">
+                Projetos
+            </h2>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="pt-4">
+            <h2 class="text-center title-with-detail" lang="en">
+                Experiences
+            </h2>
+            <h2 class="text-center title-with-detail" lang="pt">
+                Experiências
+            </h2>
+        </div>
+    </section>
+
+    <section id="tech">
+        <div class="pt-4">
+            <h2 class="text-center title-with-detail" lang="en">
+                Technologies
+            </h2>
+            <h2 class="text-center title-with-detail" lang="pt">
+                Tecnologias
+            </h2>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="pt-4">
+            <h2 class="text-center title-with-detail" lang="en">
+                Contact
+            </h2>
+            <h2 class="text-center title-with-detail" lang="pt">
+                Contato
+            </h2>
+        </div>
+    </section>
+
+    <section id="resume">
+        <div class="pt-4">
+            <h2 class="text-center title-with-detail" lang="en">
+                Resume
+            </h2>
+            <h2 class="text-center title-with-detail" lang="pt">
+                Currículo
+            </h2>
+        </div>
+    </section>
+
+
+    <!-- Bundled File -->
+    <script src="./bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(function () {
+            $('[lang="pt"]').hide();
+
+            $('.switch-btn').click(function () {
+                $('[lang="pt"]:not(html)').toggle();
+                $('[lang="en"]:not(html)').toggle();
+            })
+
+            function addClass(el) {
+                menu.removeClass('active');
+                $(el).addClass('active');
+            };
+
+            var menu = $('#header a');
+            var sectionPositions = $('section').map(function () {
+                return $(this).position().top;
+            });
+
+            var sections = $('section');
+            $(document).on('scroll', function () {
+                var scroll = $(document).scrollTop();
+                var currentElement;
+                $(sectionPositions).each(function (i) {
+                    if (scroll > this - 50) currentElement = menu[i];
+                });
+                currentElement && addClass(currentElement);
+            });
+            menu.on('click', function () {
+                addClass(this);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
